@@ -1,5 +1,4 @@
-#include <glad/glad.h> // have to be included before glfw3.h
-#include <glm/ext/vector_float3.hpp>
+#include <glad/glad.h>
 
 #include "load_obj.h"
 #include "setShaders.h"
@@ -55,6 +54,23 @@ std::vector<struct Object> objects;
 int mainloop(GLFWwindow *window);
 
 void
+show_help()
+{
+        printf("[W]: Moverse hacia delante\n");
+        printf("[A]: Girar a la izquierda\n");
+        printf("[S]: Moverse hacia atras\n");
+        printf("[D]: Girar a la derecha\n");
+        printf("[H]: Mover el cuerpo a la izquierda\n");
+        printf("[J]: Mover la grua hacia abajo\n");
+        printf("[K]: Mover la grua hacia arriba\n");
+        printf("[L]: Mover el cuerpo a la derecha\n");
+        printf("[up]: Subir la camara\n");
+        printf("[left]: Acercar la camara\n");
+        printf("[down]: Bajar la camara\n");
+        printf("[right]: Alejar la camara\n");
+}
+
+void
 __load_texture(const char *filename, GLuint *texture)
 {
         int w;
@@ -107,14 +123,14 @@ load_ground()
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         float vertices[] = {
-                -(size / 2.0f), 0.0f, -(size / 2.0f),
+                -(size / 2.0f), 0.0f,      -(size / 2.0f),
                 0.0f,           0.0f, //
-                -(size / 2.0f), 0.0f, (size / 2.0f),
+                -(size / 2.0f), 0.0f,      (size / 2.0f),
                 0.0f,           tex_scale, //
-                (size / 2.0f),  0.0f, (size / 2.0f),
-                tex_scale,           tex_scale, //
-                (size / 2.0f),  0.0f, -(size / 2.0f),
-                tex_scale,           0.0f //
+                (size / 2.0f),  0.0f,      (size / 2.0f),
+                tex_scale,      tex_scale, //
+                (size / 2.0f),  0.0f,      -(size / 2.0f),
+                tex_scale,      0.0f //
 
                 /* 3 ---- 2
                  * |      |
@@ -456,6 +472,8 @@ main(int argc, char **argv)
 
         printf(".obj loaded\n");
         printf("%zd vaos loaded\n", objects.size());
+
+        show_help();
 
         mainloop(window);
         glfwDestroyWindow(window);

@@ -17,5 +17,12 @@ test.o: test.cpp
 stb_image.h:
 	wget https://raw.githubusercontent.com/nothings/stb/refs/heads/master/stb_image.h
 
+load_obj.h:
+	wget https://raw.githubusercontent.com/hugocotoflorez/crane/refs/heads/main/load_obj.h
 
+load_obj.cpp:
+	wget https://raw.githubusercontent.com/hugocotoflorez/crane/refs/heads/main/load_obj.cpp
+
+setShaders.h:
+	wget https://raw.githubusercontent.com/hugocotoflorez/crane/refs/heads/main/setShaders.h
 
